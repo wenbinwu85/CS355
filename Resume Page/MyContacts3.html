@@ -1,0 +1,36 @@
+  <!DOCTYPE html>
+
+<html>
+<head>
+    <title>My Contacts3</title>
+    <link rel='stylesheet' type='text/css' href='./mystyle.css'/>
+</head>
+<body onload='getAllContacts()'>
+    <h1><P style='text-align: center'>My Contacts</P></h1>
+
+    <!-- my modal -->
+    <div id='myModal' class='modal'>
+        <div class='modalContent'>
+            <div class='modal-header'>
+                <h3 id='modalTitle'></h3>
+            </div>
+            First name: <input type='text' id='fname'></input> Last Name: <input type='text' id='lname'></input> <br/>
+            City: <input type='text' id='city'></input> State: <input type='text' id='state'></input> <br/>
+            Date Of Birth (YYYY-MM-DD): <input type='text' id='dob'></input> Age: <input type='text' id='age'></input> <br/>
+            Email: <input type='text' id='email'></input> <br/><br/>
+
+            <button id='submit' onclick='submit()'>Submit</button> <button id='cancel'>Cancel</button>
+        </div>
+    </div>
+
+    <!-- holds the contacts table -->
+    <div id='tableDiv'><h1>Loading contact data from the server...</h1></div>
+
+    <!-- my buttons -->
+    <button id='new' onclick='newContact()'>New Contact</button>
+    <button id='edit' onclick='editContact()'>Edit Contact</button>
+    <button id='delete' onclick='deleteContact()'>Delete Contact</button>
+
+    <script src='./scriptX.js'></script>
+</body>
+</html>

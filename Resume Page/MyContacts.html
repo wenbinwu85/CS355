@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>My Contacts</title>
+    <link rel='stylesheet' type='text/css' href='./mystyle.css'/>
+</head>
+<body>
+    <h1><P style='text-align: center'>Wenbin's Contacts</P></h1>
+
+    <table id='myTable' style='text-align: center'>
+        <tr>
+            <th><input type='checkbox' onclick='checkAllBoxes(this)'></input></th>
+            <th>First Name</th> <th>Last Name</th> <th>City</th>
+            <th>State</th> <th>Date of Birth</th> <th>Age</th>
+            <th>Email</th>
+        </tr>
+    </table>
+
+    <button onclick='addRandomContact()'>New Contact</button>
+    <button>Edit Contact</button>
+    <button>Delete Contact</button>
+    <script>
+        var myContacts = [];
+
+        function addContact(firstname, lastname, city, state, dob, age, email) {
+            myContacts.push({
+                'firstname': firstname,
+                'lastname': lastname,
+                'city': city,
+                'state': state,
+                'dob': dob,
+                'age': age,
+                'email': email
+            });
+        }
+
+        function addRow(contact) {
+            var trTag = document.createElement('tr');
+
+            var tdTag0 = document.createElement('input');
+            tdTag0.setAttribute('type', 'checkbox');
+            tdTag0.setAttribute('name', 'box');
+
+            var tdTag1 = document.createElement('td');
+            var tdTag2 = document.createElement('td');
+            var tdTag3 = document.createElement('td');
+            var tdTag4 = document.createElement('td');
+            var tdTag5 = document.createElement('td');
+            var tdTag6 = document.createElement('td');
+            var tdTag7 = document.createElement('td');
+
+            var text1 = document.createTextNode(contact.firstname);
+            var text2 = document.createTextNode(contact.lastname);
+            var text3 = document.createTextNode(contact.city);
+            var text4 = document.createTextNode(contact.state);
+            var text5 = document.createTextNode(contact.dob);
+            var text6 = document.createTextNode(contact.age);
+            var text7 = document.createTextNode(contact.email);
+
+            tdTag1.appendChild(text1);
+            tdTag2.appendChild(text2);
+            tdTag3.appendChild(text3);
+            tdTag4.appendChild(text4);
+            tdTag5.appendChild(text5);
+            tdTag6.appendChild(text6);
+            tdTag7.appendChild(text7);
+
+            trTag.appendChild(tdTag0);
+            trTag.appendChild(tdTag1);
+            trTag.appendChild(tdTag2);
+            trTag.appendChild(tdTag3);
+            trTag.appendChild(tdTag4);
+            trTag.appendChild(tdTag5);
+            trTag.appendChild(tdTag6);
+            trTag.appendChild(tdTag7);
+
+            document.getElementById('myTable').appendChild(trTag);
+        }
+
+        function checkAllBoxes(source) {
+            checkboxes = document.getElementsByName('box');
+            for (var i=0; i<checkboxes.length; i++) {
+                checkboxes[i].checked = source.checked;
+            }
+        }
+
+        function addRandomContact() {
+            contact = {
+                'firstname':'Someguy', 'lastname':'Randomson', 'city':'Some City',
+                'state':'NY', 'dob':'2018-01-01', 'age':1, 'email':'Someguy@randomson.com'
+            };
+            myContacts.push(contact);
+            addRow(contact);
+        }
+
+        // populate the myContacts variable with data
+        addContact('Wenbin', 'Wu', 'Flushing', 'NY', '2000-01-01', 18, 'wenbin@wu.com');
+        addContact('Jennifer', 'Huang', 'Flushing', 'NY', '2011-11-02', 7, 'jennifer@huang.com');
+        addContact('Eddie','Lee', 'Whitestone', 'NY', '1980-01-01', 38, 'eddie@lee.com');
+        addContact('Daniel', 'Smith', 'Phoenix', 'AZ', '1998-25-12', 30, 'daniel@smith.com');
+        addContact('Homer', 'Simpson', 'Springfield', 'OR', '1965-12-05', 53, 'homer@simposon.com');
+
+        // populate the table with data from myContacts variable
+        for (var i=0; i<myContacts.length; i++) {
+            addRow(myContacts[i]);
+        }
+    </script>
+</body>
+</html>
